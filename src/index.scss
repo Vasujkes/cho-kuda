@@ -23,6 +23,7 @@ code {
 
 .card {
   margin-top: 20px;
+  position: relative;
   &-img-top {
     height: 200px;
     object-fit: cover;
@@ -31,5 +32,37 @@ code {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: wrap;
+  }
+  &-content {
+    &__like {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      height: 30px;
+      width: 30px;
+      border-radius: 50%;
+      background: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: 1.2s;
+      &--active {
+        transition: 1.2s;
+        background: #ff647c;
+        svg {
+          path {
+            fill: #ffcf5c;
+          }
+        }
+      }
+      &:hover {
+        transform: scale(1.15);
+        svg {
+          path {
+            fill: #ff647c;
+          }
+        }
+      }
+    }
   }
 }

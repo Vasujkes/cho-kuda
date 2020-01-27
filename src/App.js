@@ -1,14 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 
 import { Loader, Filter, Content } from "./components";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 
 function App(store) {
-  useEffect(() => {
-    fetchData();
-  }, []);
   const fetchData = async () => {
     const res = await axios.get(
       `https://event-list-5a26c.firebaseio.com/events.json`
@@ -29,6 +26,9 @@ function App(store) {
     };
     store.dispatch({ type: "EVENTS:FETCH", payload });
   };
+  if (store.events.loading) {
+    fetchData();
+  }
   return (
     <div className="App">
       {store.events.loading ? (

@@ -25,13 +25,13 @@ const Filter = ({ categories }) => {
 
           <Dropdown.Menu>
             {categories.map((category, index) => (
-              <Dropdown.Item key={category.index}>{category} </Dropdown.Item>
+              <Dropdown.Item key={index}>{category} </Dropdown.Item>
             ))}
           </Dropdown.Menu>
         </Dropdown>
         <ButtonGroup aria-label="Basic example">
-          <Button variant="outline-primary">Больше</Button>
-          <Button variant="outline-primary">Меньше</Button>
+          <Button variant="outline-primary">Дешевые</Button>
+          <Button variant="outline-primary">Дорогие</Button>
         </ButtonGroup>
       </div>
     </div>
