@@ -1,0 +1,88 @@
+// COLORS
+
+$accent-main: #3f3356;
+$accent-middle: #a5affb;
+$accent-secondary: #6979f8;
+
+$primary-main: #be52f2;
+$primary-middle: #dba5f5;
+$primary-secondary: #eedff2;
+
+$semantic-good: #ffcf5c;
+$semantic-middle: #0084f4;
+$semantic-error: #ff647c;
+$semantic-succes: #00c48c;
+$semantic-main: #ffffff;
+
+$neutral-main: #1a051d;
+$neutral-middle: #3f3356;
+$neutral-secondary: #d0c9d6;
+
+$background: #e74c3c;
+$select-color: #fff;
+$select-background: #c0392b;
+$select-width: 220px;
+$select-height: 40px;
+
+// mixins
+
+@mixin Heading($fs, $lh) {
+  font-size: $fs;
+  line-height: $lh;
+}
+
+// Typography
+
+h1,
+h2,
+h3,
+h4,
+span,
+strong,
+small {
+  font-family: "Lato", sans-serif;
+  margin: 0;
+  padding: 0;
+  color: $neutral-main;
+}
+
+p {
+  color: $neutral-main;
+  @include Heading(17px, 22px);
+}
+
+h1 {
+  font-family: "Montserrat", sans-serif;
+  @include Heading(32px, 39px);
+}
+
+h2 {
+  font-family: "Montserrat", sans-serif;
+  @include Heading(22px, 28px);
+}
+
+span {
+  @include Heading(14px, 16px);
+}
+
+strong {
+  @include Heading(17px, 21px);
+}
+
+small {
+  @include Heading(13px, 16px);
+}
+
+// Other
+
+button,
+input {
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  cursor: pointer;
+}
