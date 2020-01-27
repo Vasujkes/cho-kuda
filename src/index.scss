@@ -20,3 +20,16 @@ code {
   align-items: center;
   flex-direction: column;
 }
+
+.card {
+  margin-top: 20px;
+  &-img-top {
+    height: 200px;
+    object-fit: cover;
+  }
+  &-text {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: wrap;
+  }
+}

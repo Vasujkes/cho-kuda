@@ -8,13 +8,12 @@ import {
 } from "react-bootstrap";
 
 const Filter = ({ categories }) => {
-  console.log(categories);
   return (
     <div className="filter">
       <InputGroup className="mb-3 container">
         <FormControl
-          placeholder="Recipient's username"
-          aria-label="Recipient's username"
+          placeholder="Найти событие"
+          aria-label="Найти событие"
           aria-describedby="basic-addon2"
         />
       </InputGroup>

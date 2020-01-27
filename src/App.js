@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 
-import { Loader, Filter } from "./components";
+import { Loader, Filter, Content } from "./components";
 import { Container, Row, Col } from "react-bootstrap";
 
 function App(store) {
@@ -35,7 +35,10 @@ function App(store) {
         <Loader />
       ) : (
         <Container>
-          <Filter categories={store.events.categories} />
+          <div className="d-flex flex-column ">
+            <Filter categories={store.events.categories} />
+            <Content events={store.events.data} />
+          </div>
         </Container>
       )}
     </div>
