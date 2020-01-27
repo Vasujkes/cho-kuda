@@ -1,7 +1,41 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import axios from "axios";
 
-function App() {
-  return <div className="App"><h1>Hello</h1><span>asd</span></div>;
+function App(store) {
+  useEffect(() => {
+    fetchData();
+  }, []);
+  const fetchData = async () => {
+    const res = await axios.get(
+      `https://event-list-5a26c.firebaseio.com/events.json`
+    );
+    const data = Object.keys(res.data).map(key => {
+      return {
+        ...res.data[key],
+        id: key
+      };
+    });
+    const categories = res.data
+      .map(key => key.categories)
+      .join()
+      .split(",");
+    const payload = {
+      data,
+      categories: [...new Set(categories)]
+    };
+    store.dispatch({ type: "EVENTS:FETCH", payload });
+  };
+
+  return (
+    <div className="App">
+      <h1>Hello</h1>
+      <span>asd</span>
+    </div>
+  );
 }
 
-export default App;
+const mapState = state => ({
+  ...state
+});
+export default connect(mapState)(App);
