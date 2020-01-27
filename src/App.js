@@ -2,6 +2,9 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 
+import { Loader, Filter } from "./components";
+import { Container, Row, Col } from "react-bootstrap";
+
 function App(store) {
   useEffect(() => {
     fetchData();
@@ -26,11 +29,15 @@ function App(store) {
     };
     store.dispatch({ type: "EVENTS:FETCH", payload });
   };
-
   return (
     <div className="App">
-      <h1>Hello</h1>
-      <span>asd</span>
+      {store.events.loading ? (
+        <Loader />
+      ) : (
+        <Container>
+          <Filter categories={store.events.categories} />
+        </Container>
+      )}
     </div>
   );
 }
