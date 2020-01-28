@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import axios from "axios";
+import VisibleEventList from "./containers/VisibleEventList";
 
 import { Loader, Filter, Content } from "./components";
 import { Container } from "react-bootstrap";
@@ -37,7 +38,9 @@ function App(store) {
         <Container>
           <div className="d-flex flex-column ">
             <Filter categories={store.events.categories} />
-            <Content events={store.events.data} />
+            <VisibleEventList events={store.events.data} />
+            
+            {/*  <Content events={store.events.data} /> */}
           </div>
         </Container>
       )}

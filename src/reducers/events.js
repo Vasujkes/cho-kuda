@@ -10,6 +10,11 @@ export default (state = initialState, action) => {
         loading: false
       };
 
+    case "EVENT:SHOW":
+      return state.map(event =>
+        event.id === action.id ? { ...event, show: !true } : event
+      );
+
     default:
       return state;
   }

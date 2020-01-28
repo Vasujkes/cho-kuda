@@ -1,6 +1,8 @@
 import React from "react";
 import { Card, Col, Button } from "react-bootstrap";
 import classNames from "classnames";
+import FilterEvent from "../../containers/FilterEvent";
+import { CategoryFilters } from "../../actions/events";
 
 const EventCard = ({ event }) => {
   function formatDate(date) {
@@ -72,12 +74,15 @@ const EventCard = ({ event }) => {
           <Card.Text>{event.body}</Card.Text>
           {event.categories.map((cat, index) => (
             <Button
-              key={index}
               variant="outline-dark"
               size="sm"
               className="mr-2"
+              key={index}
             >
-              {cat}
+              <FilterEvent filter={CategoryFilters.SHOW_ACTIVE} category={cat}>
+
+                {cat}
+              </FilterEvent>
             </Button>
           ))}
         </Card.Body>

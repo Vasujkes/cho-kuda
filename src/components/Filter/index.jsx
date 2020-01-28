@@ -1,4 +1,6 @@
 import React from "react";
+import { CategoryFilters } from "../../actions/events";
+import FilterEvent from "../../containers/FilterEvent";
 import {
   Dropdown,
   InputGroup,
@@ -17,6 +19,12 @@ const Filter = ({ categories }) => {
           aria-describedby="basic-addon2"
         />
       </InputGroup>
+      <FilterEvent filter={CategoryFilters.SHOW_ALL} category="test">
+        Сбросить фильтры
+      </FilterEvent>
+      <FilterEvent filter={CategoryFilters.SHOW_FAVORITE} category="test2">
+        Избранные
+      </FilterEvent>
       <div className="container d-flex justify-content-between">
         <Dropdown>
           <Dropdown.Toggle variant="success" id="dropdown-basic">
@@ -25,7 +33,16 @@ const Filter = ({ categories }) => {
 
           <Dropdown.Menu>
             {categories.map((category, index) => (
-              <Dropdown.Item key={index}>{category} </Dropdown.Item>
+              <Dropdown.Item key={index}>
+                <FilterEvent
+                  filter={CategoryFilters.SHOW_ACTIVE}
+                  category={category}
+                >
+                  <Button className="button-hide " size="sm">
+                    {category}
+                  </Button>
+                </FilterEvent>
+              </Dropdown.Item>
             ))}
           </Dropdown.Menu>
         </Dropdown>
