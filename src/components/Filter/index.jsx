@@ -1,6 +1,7 @@
 import React from "react";
 import { CategoryFilters } from "../../actions/events";
 import FilterEvent from "../../containers/FilterEvent";
+import classNames from "classnames";
 import {
   Dropdown,
   InputGroup,
@@ -9,8 +10,8 @@ import {
   ButtonGroup
 } from "react-bootstrap";
 
-const Filter = ({ categories }) => {
- 
+const Filter = ({ categories, loading, sortEvents, sort }) => {
+  console.log(sort);
   return (
     <div className="filter">
       <InputGroup className="mb-3 container">
@@ -48,8 +49,20 @@ const Filter = ({ categories }) => {
           </Dropdown.Menu>
         </Dropdown>
         <ButtonGroup aria-label="Basic example">
-          <Button variant="outline-primary">Дешевые</Button>
-          <Button variant="outline-primary">Дорогие</Button>
+          <Button
+            variant="outline-primary "
+            className={classNames("mr-2", { active: sort === "asc" })}
+            onClick={() => sortEvents("asc")}
+          >
+            Дешевые
+          </Button>
+          <Button
+            variant="outline-primary"
+            className={classNames({ active: sort === "desc" })}
+            onClick={() => sortEvents("desc")}
+          >
+            Дорогие
+          </Button>
         </ButtonGroup>
       </div>
     </div>

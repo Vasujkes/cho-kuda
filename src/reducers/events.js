@@ -1,4 +1,4 @@
-const initialState = { categories: [], data: [], loading: true };
+const initialState = { categories: [], data: [], loading: true, sort: "asc" };
 
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -16,7 +16,11 @@ export default (state = initialState, action) => {
           event.id === action.id ? { ...event, fav: !event.fav } : event
         )
       };
-
+    case "TOOGLE_EVENT":
+      return {
+        ...state,
+        sort: (state.sort = action.payload)
+      };
     default:
       return state;
   }

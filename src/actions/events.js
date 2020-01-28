@@ -19,3 +19,8 @@ export const CategoryFilters = {
   SHOW_ACTIVE: "SHOW_ACTIVE",
   SHOW_FAVORITES: "SHOW_FAVORITE"
 };
+
+export const toggleEventsList = payload => ({
+  type: "TOOGLE_EVENT",
+  payload
+});
