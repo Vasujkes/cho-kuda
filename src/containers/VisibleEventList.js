@@ -1,13 +1,9 @@
 import { connect } from "react-redux";
-import { Content,Filter } from "../components";
-import {
-  CategoryFilters,
-  setFavorite,
-  toggleEventsList
-} from "../actions/events";
-import sortEvents from "./EventSort";
+import { Content } from "../components";
+import { CategoryFilters, setFavorite } from "../actions/events";
 
 const getVisibleEvents = (events, action) => {
+ 
   switch (action.filter) {
     case CategoryFilters.SHOW_ALL:
       return events.data;
@@ -31,8 +27,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  setFavorite: id => dispatch(setFavorite(id)),
-  toggleEventsList: () => dispatch(toggleEventsList())
+  setFavorite: id => dispatch(setFavorite(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Content);

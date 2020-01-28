@@ -1,6 +1,9 @@
 import { CategoryFilters } from "../actions/events";
 
-const categoryFilters = (state = CategoryFilters.SHOW_ALL, action) => {
+const categoryFilters = (
+  state = { type: CategoryFilters.SHOW_ALL, filter: "SHOW_ALL" },
+  action
+) => {
   switch (action.type) {
     case "SET_VISIBILITY_FILTER":
       return action;
@@ -8,7 +11,5 @@ const categoryFilters = (state = CategoryFilters.SHOW_ALL, action) => {
       return state;
   }
 };
-
-
 
 export default categoryFilters;

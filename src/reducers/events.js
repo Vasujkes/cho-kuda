@@ -1,4 +1,10 @@
-const initialState = { categories: [], data: [], loading: true, sort: "asc" };
+const initialState = {
+  categories: [],
+  data: [],
+  fav: 0,
+  loading: true,
+  sort: "asc"
+};
 
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -14,7 +20,8 @@ export default (state = initialState, action) => {
         ...state,
         data: state.data.map(event =>
           event.id === action.id ? { ...event, fav: !event.fav } : event
-        )
+        ),
+        fav: state.fav + 1
       };
     case "TOOGLE_EVENT":
       return {

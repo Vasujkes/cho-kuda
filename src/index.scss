@@ -74,3 +74,11 @@ code {
     display: inline-block;
   }
 }
+
+.card-deck {
+  display: flex;
+  justify-content: center;
+}
+.badge {
+  top: 0 !important;
+}

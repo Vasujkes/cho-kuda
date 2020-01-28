@@ -10,8 +10,8 @@ import {
   ButtonGroup
 } from "react-bootstrap";
 
-const Filter = ({ categories, loading, sortEvents, sort }) => {
-  console.log(sort);
+const Filter = ({ categories, loading, sortEvents, sort, fav }) => {
+  console.log(fav);
   return (
     <div className="filter">
       <InputGroup className="mb-3 container">
@@ -21,12 +21,28 @@ const Filter = ({ categories, loading, sortEvents, sort }) => {
           aria-describedby="basic-addon2"
         />
       </InputGroup>
-      <FilterEvent filter={CategoryFilters.SHOW_ALL} category="test">
-        Сбросить фильтры
-      </FilterEvent>
-      <FilterEvent filter={CategoryFilters.SHOW_FAVORITE} category="test2">
-        Избранные
-      </FilterEvent>
+
+      <div className="container d-flex justify-content-start">
+        <FilterEvent filter={CategoryFilters.SHOW_ALL} category="test">
+          <Button
+            variant="btn btn-outline-info btn-rounded waves-effect"
+            size="sm"
+            className="mr-2 mb-3"
+          >
+            Сбросить фильтры
+          </Button>
+        </FilterEvent>
+        <FilterEvent filter={CategoryFilters.SHOW_FAVORITE} category="test2">
+          <Button
+            variant="btn btn-outline-info btn-rounded waves-effect"
+            size="sm"
+            className={classNames({ invisible: fav === 0 })}
+          >
+            Избранное: <span className="badge badge--info">{fav}</span>
+          </Button>
+        </FilterEvent>
+      </div>
+
       <div className="container d-flex justify-content-between">
         <Dropdown>
           <Dropdown.Toggle variant="success" id="dropdown-basic">

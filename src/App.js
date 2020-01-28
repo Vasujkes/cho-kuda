@@ -2,10 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 import VisibleEventList from "./containers/VisibleEventList";
-import toggleEventsList from "./actions/events";
-import { Loader, Filter } from "./components";
+import { Filter } from "./components";
 import { Container } from "react-bootstrap";
 function App(store) {
+
   const fetchData = async () => {
     const res = await axios.get(
       `https://event-list-5a26c.firebaseio.com/events.json`
@@ -34,6 +34,7 @@ function App(store) {
     store.dispatch({ type: "TOOGLE_EVENT", payload });
   };
 
+
   return (
     <div className="App">
       <Container>
@@ -42,6 +43,7 @@ function App(store) {
             categories={store.events.categories}
             sortEvents={sortEvents}
             sort={store.events.sort}
+            fav={store.events.fav}
           />
           <VisibleEventList />
         </div>
