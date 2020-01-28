@@ -46,20 +46,16 @@ code {
       justify-content: center;
       align-items: center;
       transition: 1.2s;
+      &:hover {
+        transform: scale(1.15);
+      }
       &--active {
         transition: 1.2s;
         background: #ff647c;
         svg {
           path {
+            stroke: #ffcf5c;
             fill: #ffcf5c;
-          }
-        }
-      }
-      &:hover {
-        transform: scale(1.15);
-        svg {
-          path {
-            fill: #ff647c;
           }
         }
       }

@@ -1,17 +1,15 @@
 import React from "react";
 import EventCard from "./Card";
 
-import { Card, CardDeck, Col } from "react-bootstrap";
+import { CardDeck } from "react-bootstrap";
 
-const Content = ({ events }) => {
+const Content = ({ events, setFavorite }) => {
   return (
     <CardDeck>
       <div className=" d-flex flex-wrap bd-highlight ">
-        {events.length > 0
-          ? events.map((event, index) => (
-              <EventCard event={event} key={index} />
-            ))
-          : console.log("Пусто")}
+        {events.map((event, index) => (
+              <EventCard event={event} key={index} setFavorite={setFavorite}/>
+            ))}
       </div>
     </CardDeck>
   );

@@ -4,7 +4,7 @@ import classNames from "classnames";
 import FilterEvent from "../../containers/FilterEvent";
 import { CategoryFilters } from "../../actions/events";
 
-const EventCard = ({ event }) => {
+const EventCard = ({ event, setFavorite }) => {
   function formatDate(date) {
     const monthNames = [
       "Января",
@@ -42,7 +42,7 @@ const EventCard = ({ event }) => {
           className={classNames("card-content__like", {
             "card-content__like--active": event.fav
           })}
-          onClick={() => console.log(event)}
+          onClick={() => setFavorite(event.id)}
         >
           <svg
             width="20"
@@ -80,7 +80,6 @@ const EventCard = ({ event }) => {
               key={index}
             >
               <FilterEvent filter={CategoryFilters.SHOW_ACTIVE} category={cat}>
-
                 {cat}
               </FilterEvent>
             </Button>

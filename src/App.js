@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import axios from "axios";
 import VisibleEventList from "./containers/VisibleEventList";
 
-import { Loader, Filter, Content } from "./components";
+import { Loader, Filter } from "./components";
 import { Container } from "react-bootstrap";
 
 function App(store) {
@@ -29,21 +29,17 @@ function App(store) {
   };
   if (store.events.loading) {
     fetchData();
-  }
+  } 
   return (
     <div className="App">
-      {store.events.loading ? (
-        <Loader />
-      ) : (
-        <Container>
-          <div className="d-flex flex-column ">
-            <Filter categories={store.events.categories} />
-            <VisibleEventList events={store.events.data} />
-            
-            {/*  <Content events={store.events.data} /> */}
-          </div>
-        </Container>
-      )}
+      <Container>
+        <div className="d-flex flex-column ">
+          <Filter
+            categories={store.events.categories}
+          />
+          <VisibleEventList />
+        </div>
+      </Container>
     </div>
   );
 }

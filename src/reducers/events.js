@@ -9,11 +9,13 @@ export default (state = initialState, action) => {
         categories: action.payload.categories,
         loading: false
       };
-
-    case "EVENT:SHOW":
-      return state.map(event =>
-        event.id === action.id ? { ...event, show: !true } : event
-      );
+    case "SET_FAVORITE":
+      return {
+        ...state,
+        data: state.data.map(event =>
+          event.id === action.id ? { ...event, fav: !event.fav } : event
+        )
+      };
 
     default:
       return state;
