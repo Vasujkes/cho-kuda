@@ -3,7 +3,7 @@ const initialState = {
   data: [],
   fav: 0,
   loading: true,
-  sort: "asc"
+  sort: "asc",
 };
 
 export default (state = initialState, action) => {
@@ -13,20 +13,20 @@ export default (state = initialState, action) => {
         ...state,
         data: action.payload.data,
         categories: action.payload.categories,
-        loading: false
+        loading: false,
       };
     case "SET_FAVORITE":
       return {
         ...state,
-        data: state.data.map(event =>
+        data: state.data.map((event) =>
           event.id === action.id ? { ...event, fav: !event.fav } : event
         ),
-        fav: state.fav + 1
+        fav: state.data[action.id].fav === true ? state.fav - 1 : state.fav + 1,
       };
     case "TOOGLE_EVENT":
       return {
         ...state,
-        sort: (state.sort = action.payload)
+        sort: (state.sort = action.payload),
       };
     default:
       return state;

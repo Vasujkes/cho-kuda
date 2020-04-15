@@ -2,9 +2,11 @@ import React from "react";
 import { Card, Col, Button } from "react-bootstrap";
 import classNames from "classnames";
 import FilterEvent from "../../containers/FilterEvent";
+import PersonalPage from "./PersonalPage";
 import { CategoryFilters } from "../../actions/events";
+import { Link, Switch, Route } from "react-router-dom";
 
-const EventCard = ({ event, setFavorite }) => {
+const EventCard = ({ event, setFavorite, openEventPage }) => {
   function formatDate(date) {
     const monthNames = [
       "Января",
@@ -30,6 +32,9 @@ const EventCard = ({ event, setFavorite }) => {
 
   return (
     <Col lg="6">
+      <Switch>
+        <Route path={`/${openEventPage.slug}`} component={PersonalPage}>asd</Route>
+      </Switch>
       <Card>
         <Card.Img
           variant="top"
@@ -64,11 +69,14 @@ const EventCard = ({ event, setFavorite }) => {
           <Card.Title>
             <div className="d-flex justify-content-between align-items-center">
               {event.title}
-              {event.is_free ? (
-                <Button variant="outline-warning">Халява</Button>
-              ) : (
-                <Button variant="outline-warning">{event.price}</Button>
-              )}
+              <Link to={event.slug}>
+                <Button
+                  variant="outline-warning"
+                  onClick={() => openEventPage(event.slug, event.id)}
+                >
+                  {event.is_free ? "Халява" : event.price}
+                </Button>
+              </Link>
             </div>
           </Card.Title>
           <Card.Text>{event.body}</Card.Text>

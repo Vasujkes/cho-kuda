@@ -11,7 +11,6 @@ import {
 } from "react-bootstrap";
 
 const Filter = ({ categories, loading, sortEvents, sort, fav }) => {
-  console.log(fav);
   return (
     <div className="filter">
       <InputGroup className="mb-3 container">
